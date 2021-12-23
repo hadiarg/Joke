@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Django</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+    <h3 id="web">{{text}}</h3>
+</body>
+<script>
+    var socket = new WebSocket('ws://localhost:8000/ws/web/');
+    socket.onmessage = function(event) {
+        var joke = event.data;
+        document.querySelector('#web').innerText = joke;
+    }
+</script>
+
+</html>
